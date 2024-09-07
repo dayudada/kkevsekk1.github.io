@@ -20,11 +20,18 @@ sidebar_position: 1
 import { showToast } from "toast";
 ```
 
+## 多线程与异步
+
+在 nodejs 引擎将不再支持多线程，取而代之的是`Promise`和异步函数，第二代 api 大多数都将以返回`Promise`表示异步操作，对于来自 java 的阻塞调用（如 io 读写）可通过`java`模块中的相关函数转换成一个`Promise`而不阻塞 nodejs 线程。
+:::warning
+如果你强行使用`java.lang.Thread`类运行 js 代码将会使引擎崩溃
+:::
+
 ........待补充
 
 ## autox v7 开发进度
 
-- [x] **分离脚本引擎运行的进程（进行中）**
+- [x] **分离脚本引擎运行的进程**
       使脚本运行在与 app 不同的进程，彻底解决脚本崩溃连同 app 一起崩溃的问题
 - [ ] **迁移 app 界面至 m3 风格**
 - [ ] **完善的插件扩展功能**
@@ -48,9 +55,11 @@ git fetch --all
 ```
 
 3. 创建并拉取 v7 分支
-   ```shell
-   git checkout -b setup-v7 aiselp/setup-v7
-   ```
+
+```shell
+git checkout -b setup-v7 aiselp/setup-v7
+```
+
 4. 推送到你的远程仓库并设置为默认
    `git push -u origin setup-v7`
    其中 origin 表示你的远程仓库名，可能并非为 origin

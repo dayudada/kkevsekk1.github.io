@@ -34,6 +34,11 @@ function HomepageHeader() {
             to="/docs/rhino/documentation">
             进入第一代api文档
           </Link>
+          <Link
+            className={buttonClass}
+            to="/docs/nodejs/intro">
+            进入第二代api文档
+          </Link>
         </div>
       </div>
     </header>

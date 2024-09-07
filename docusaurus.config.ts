@@ -100,7 +100,7 @@ const config: Config = {
               to: '/docs/rhino/documentation',
             }, {
               label: 'nodejs api文档(v7)',
-              to: '/docs/rhino/documentation',
+              to: '/docs/nodejs/intro',
             },
           ],
         },

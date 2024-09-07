@@ -15,11 +15,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: checkout v7-api
+        uses: actions/checkout@v4
+        with:
+          repository: kkevsekk1/AutoX
+          path: Autox-v7-api
+          sparse-checkout: |
+            autojs/src/js-api
+          ref: dev-v7
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+      - name: build-v7-api
+        run: |
+          pushd Autox-v7-api/autojs/src/js-api
+          npm install
+          npm run docs
+          popd
+          rm -rf docs/nodejs/docs
+          mv Autox-v7-api/autojs/src/js-api/docs/ docs/nodejs/
       - name: Install dependencies
         run: npm ci
       - name: Test build website
